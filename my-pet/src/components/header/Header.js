@@ -1,19 +1,21 @@
-import '../header/Header.css';
 
 function Header(){
    return (
-      <header className="navigationBar">
-         <nav>
-            <ul>
-               <li><a href="#">Home</a></li>
-               <li><a href="#">My Pets</a></li>
-               <li><a href="#">My Profile</a></li>
-               <li><a href="#">Logout</a></li>
-               <li><a href="#">Register</a></li>
-               <li><a href="#">Login</a></li>
-            </ul>
-         </nav>
-      </header>
+      <header>
+        <div className="navigation">
+            <nav>
+                <ul>
+                    <li><a href="">HOME</a></li>
+                    <li><a href="">MY PET</a></li>
+                    <li><a href="">ALL PETS</a></li>
+                    <li><a href="">MY PROFILE</a></li>
+                    <li><a href="">REGISTER</a></li>
+                    <li><a href="">LOGIN</a></li>
+                    <li><a href="">LOGOUT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
    );
 }
 
