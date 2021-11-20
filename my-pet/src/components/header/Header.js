@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 
 function Header(){
    return (
@@ -5,13 +6,13 @@ function Header(){
         <div className="navigation">
             <nav>
                 <ul>
-                    <li><a href="">HOME</a></li>
-                    <li><a href="">MY PET</a></li>
-                    <li><a href="">ALL PETS</a></li>
-                    <li><a href="">MY PROFILE</a></li>
-                    <li><a href="">REGISTER</a></li>
-                    <li><a href="">LOGIN</a></li>
-                    <li><a href="">LOGOUT</a></li>
+                    <li><Link to="/">HOME</Link></li>
+                    <li><Link to="">MY PETS</Link></li>
+                    <li><Link to="/pets/all">ALL PETS</Link></li>
+                    <li><Link to="/user/myprofile">MY PROFILE</Link></li>
+                    <li><Link to="/user/register">REGISTER</Link></li>
+                    <li><Link to="/user/login">LOGIN</Link></li>
+                    <li><Link to="">LOGOUT</Link></li>
                 </ul>
             </nav>
         </div>
