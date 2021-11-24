@@ -1,7 +1,33 @@
+import * as petService from '../../services/petService';
+import { useHistory } from 'react-router-dom';
+
 
 function Create() {
+    let history = useHistory();
+
+    const submitHandler = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+        let petName = formData.get('petName');
+        let breed = formData.get('breed');
+        let age = formData.get('age');
+        let type = formData.get('type').toUpperCase();
+        let imageURL = formData.get('imageURL');
+        
+        let response = await petService.createPet(petName, breed, age, type, imageURL);
+
+        console.log(response);
+
+        if(response._id){
+            //history.push('/pets/all');
+            history.push(`/pets/details/${response._id}`);
+        }
+    }
+
+
    return (
-         <form>
+         <form onSubmit={submitHandler}>
             <div className="createPet">
                 <div className="form-headings">
                     <h3>ADD PET</h3>

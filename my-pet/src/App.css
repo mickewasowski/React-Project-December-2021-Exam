@@ -98,6 +98,7 @@ button[type=submit]{
 .allPetsContainer{
    display: flex;
    justify-content: space-around;
+   flex-flow: wrap;
 }
 
 .detailsBtn{

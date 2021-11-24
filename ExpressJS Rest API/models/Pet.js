@@ -12,7 +12,7 @@ const petSchema = new mongoose.Schema({
       type: String,
       required: true,
       validate: [/^[a-zA-Z\s]+$/, 'Breed must contain only english alphabetical characters!'],
-      minlength: [9, 'Breed must be at least 9 characters long!'],
+      minlength: [5, 'Breed must be at least 5 characters long!'],
    },
    age: {
       type: Number,
@@ -23,7 +23,7 @@ const petSchema = new mongoose.Schema({
    type: {
       type: String,
       required: true,
-      enum: ['CAT', 'DOG']
+      enum: ['CAT', 'DOG', 'PARROT', 'SNAKE']
    },
    imageURL:{
       type: String,

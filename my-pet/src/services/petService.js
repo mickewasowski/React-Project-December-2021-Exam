@@ -6,3 +6,19 @@ export function getAll() {
 }
 
 export const getOne = (id) => fetch(`${baseURL}/pets/${id}`).then(res => res.json());
+
+export const createPet = (petName, breed, age, type, imageURL) => 
+    fetch(`${baseURL}/pets/create`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                petName,
+                breed,
+                age,
+                type,
+                imageURL
+            })
+        })
+        .then(res => {return res.json()});
