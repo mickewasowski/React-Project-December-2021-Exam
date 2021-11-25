@@ -5,10 +5,13 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
+const petsRouter = require('./routes/pets');
+const homeRouter = require('./routes/home');
+
 app.use(cors());
 app.use(express.json());
 
-const petsRouter = require('./routes/pets');
+app.use('/', homeRouter);
 app.use('/pets', petsRouter);
 
 mongoose.connect(DATABASE_CONNECTION_STRING)
