@@ -95,6 +95,7 @@ button[type=submit]{
    box-shadow: rgba(5, 5, 5, 0.925) 0px 7px 29px 0px;
 }
 
+.topPetsAdded,
 .allPetsContainer{
    display: flex;
    justify-content: space-around;

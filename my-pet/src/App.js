@@ -1,5 +1,7 @@
 import {Route, Switch} from 'react-router-dom';
 
+import HomeScreen from './components/common/HomeScreen';
+
 import Header from './components/header/Header';
 import AllPets from './components/pet/AllPets';
 import Create from './components/pet/Create';
@@ -16,6 +18,7 @@ function App() {
     <div className="App">
       <Header/>
       <Switch>
+        <Route path="/" exact component={HomeScreen}/>
         <Route path="/pets/all" exact component={AllPets}/>
         <Route path="/pets/create" exact component={Create}/>
         <Route path="/pets/details/:petId" exact component={Details}/>

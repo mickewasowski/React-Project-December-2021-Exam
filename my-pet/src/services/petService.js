@@ -22,3 +22,7 @@ export const createPet = (petName, breed, age, type, imageURL) =>
             })
         })
         .then(res => {return res.json()});
+
+
+export const getTopThreeAdded = () => fetch(`${baseURL}`)
+                                        .then(res => res.json());
