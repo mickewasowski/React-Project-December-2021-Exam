@@ -19,3 +19,7 @@ exports.deleteOne = async function(petId){
 exports.editOne = async function(petId, petData){
    return await Pet.findByIdAndUpdate(petId, petData, {runValidators: true});
 }
+
+exports.getTopThree = async function(){
+   return await Pet.find().sort({_id : -1}).limit(3);
+}
