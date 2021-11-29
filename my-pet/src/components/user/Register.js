@@ -11,7 +11,7 @@ function Register(){
             </div>
             <div>
                <label>Full Name : </label>
-               <input type="text" placeholder="Enter Full Name" name="fullname" required />
+               <input type="text" placeholder="Enter Full Name" name="fullName" required />
             </div>
             <div>
                <label>Email : </label>

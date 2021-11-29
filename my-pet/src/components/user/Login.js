@@ -10,7 +10,7 @@ function Login(){
             </div>
          <div>
             <label>Password : </label>
-            <input type="password" placeholder="Enter Repeat Password" name="re-password" required />
+            <input type="password" placeholder="Enter Password" name="password" required />
          </div>
          <div className="btn-container">
             <button type="submit">LOGIN</button>
