@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
    fullName: {
       type: String,
       required: true,
-      validate: [/^[a-zA-Z]+$/, 'Full name must contain only english alphabetical!'],
+      validate: [/^([a-zA-Z]+ [a-zA-Z]+)$|^([a-zA-Z]+ [a-zA-Z]+ [a-zA-Z]+)$/, 'Full name must contain only english alphabetical!'],
       minlength: [8, 'Full name must be at least 8 characters long!'],
    },
    email: {
