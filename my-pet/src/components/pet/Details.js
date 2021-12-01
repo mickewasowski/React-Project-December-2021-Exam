@@ -1,3 +1,5 @@
+import styles from './Details.module.css';
+
 import { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import * as petService from '../../services/petService';
@@ -20,7 +22,7 @@ const Details = ({
    return (
       <div className="details">
           
-                <div className="main">
+                <div className={styles.main}>
                     <div className="left">
                         <div className="petDetails">
                             <h1>Pet Name : {pet.petName} </h1>
@@ -33,15 +35,14 @@ const Details = ({
 
 
                             <div className="buttonsContainer">
-                                <Link to={`/pets/edit/${pet._id}`} className="edit-btn">Edit</Link>
-                                <Link to={`/pets/delete/${pet._id}`} className="del-btn">Delete</Link>
+                                <Link to={`/pets/edit/${pet._id}`} className={styles.editBtn}>Edit</Link>
+                                <Link to={`/pets/delete/${pet._id}`} className={styles.delBtn}>Delete</Link>
                             </div>
 
                         </div>
                     </div>
-                    <div className="right">
-                        <img src={pet.imageURL} alt="image"
-                            width="200px" height="200px" />
+                    <div >
+                        <img className={styles.petImg} src={pet.imageURL} alt="image"/>
                     </div>
                 </div>
 

@@ -1,8 +1,10 @@
+import styles from './Register.module.css';
+
 function Register(){
    return(
       <form>
             <div className="register">
-               <div className="form-headings">
+               <div className={styles.formHeadings}>
                   <h3>REGISTER</h3>
                </div>
                <div>
@@ -25,7 +27,7 @@ function Register(){
                <label>Repeat Password : </label>
                <input type="password" placeholder="Enter Repeat Password" name="rePassword" required />
             </div>
-            <div className="btn-container">
+            <div className={styles.btnContainer}>
                <button type="submit">REGISTER</button>
             </div>
             </div>

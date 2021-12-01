@@ -1,3 +1,5 @@
+import styles from './Edit.module.css';
+
 import * as petService from '../../services/petService';
 
 import {useState, useEffect} from 'react';
@@ -24,7 +26,7 @@ const Edit = ({
    return (
       <form action="" onSubmit={submitHandler}>
             <div className="editPet">
-                <div className="form-headings">
+                <div className={styles.formHeadings}>
                     <h3>EDIT PET</h3>
                     <img src={pet.imageURL} alt="image"
                             width="100px" height="100px" />
@@ -45,7 +47,7 @@ const Edit = ({
                     <label>Type : </label>
                     <input type="text" defaultValue={pet.type}></input>
                 </div>
-                <div className="btn-container">
+                <div className={styles.btnContainer}>
                     <button type="submit"> EDIT </button>
                 </div>
             </div>

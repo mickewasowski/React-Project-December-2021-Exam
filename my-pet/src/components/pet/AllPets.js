@@ -1,3 +1,5 @@
+import styles from './AllPets.module.css';
+
 import { useState, useEffect } from 'react';
 
 import * as petService from '../../services/petService';
@@ -23,7 +25,7 @@ function AllPets(){
       <div >
          <h3>ALL PETS</h3>
 
-         <div className="allPetsContainer">
+         <div className={styles.allPetsContainer}>
             
             {
                pets.length > 0 

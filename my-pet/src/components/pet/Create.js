@@ -1,3 +1,5 @@
+import styles from './Create.module.css';
+
 import * as petService from '../../services/petService';
 import { useHistory } from 'react-router-dom';
 
@@ -27,7 +29,7 @@ function Create() {
    return (
          <form onSubmit={submitHandler}>
             <div className="createPet">
-                <div className="form-headings">
+                <div className={styles.formHeadings}>
                     <h3>ADD PET</h3>
                 </div>
                 <div>
@@ -49,7 +51,7 @@ function Create() {
                 <label>Image URL :</label>
                 <input type="text" placeholder="Enter Image URL" name="imageURL" required />
             </div>
-            <div className="btn-container">
+            <div className={styles.btnContainer}>
                 <button type="submit">ADD PET</button>
             </div>
             </div>

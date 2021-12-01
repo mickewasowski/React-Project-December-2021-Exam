@@ -1,3 +1,5 @@
+import styles from './Header.module.css';
+
 import {Link, NavLink} from 'react-router-dom'
 
 function Header(){
@@ -5,11 +7,11 @@ function Header(){
 
    return (
       <header>
-        <div className="navigation">
+        <div className={styles.navigation}>
             <nav>
                 <ul>
                     <li><NavLink activeStyle={activeStyles} to="/">HOME</NavLink></li>
-                    <li><NavLink activeStyle={activeStyles}to="">MY PETS</NavLink></li>
+                    <li><NavLink activeStyle={activeStyles}to="/pets/myPets">MY PETS</NavLink></li>
                     <li><NavLink activeStyle={activeStyles} to="/pets/all">ALL PETS</NavLink></li>
                     <li><NavLink activeStyle={activeStyles} to="/pets/create">CREATE</NavLink></li>
                     <li><NavLink activeStyle={activeStyles} to="/user/myprofile">MY PROFILE</NavLink></li>

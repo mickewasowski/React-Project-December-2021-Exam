@@ -4,6 +4,7 @@ import HomeScreen from './components/common/HomeScreen';
 
 import Header from './components/header/Header';
 import AllPets from './components/pet/AllPets';
+import MyPets from './components/pet/MyPets';
 import Create from './components/pet/Create';
 import Details from './components/pet/Details';
 import Edit from './components/pet/Edit';
@@ -20,6 +21,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={HomeScreen}/>
         <Route path="/pets/all" exact component={AllPets}/>
+        <Route path="/pets/myPets" exact component={MyPets}/>
         <Route path="/pets/create" exact component={Create}/>
         <Route path="/pets/details/:petId" exact component={Details}/>
         <Route path="/pets/edit/:petId" exact component={Edit}/>

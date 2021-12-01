@@ -1,3 +1,5 @@
+import styles from './HomeScreen.module.css';
+
 import * as petService from '../../services/petService';
 import PetPartial from '../pet/partials/PetPartial';
 
@@ -17,7 +19,7 @@ const HomeScreen = () => {
          <div >
             <h3>LATEST ADDED</h3>
 
-            <div className="topPetsAdded">
+            <div className={styles.topPetsAdded}>
                
                {
                   topPets.length > 0 
