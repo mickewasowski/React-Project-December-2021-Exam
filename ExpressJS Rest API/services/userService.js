@@ -35,7 +35,8 @@ exports.login = async function(username, password){
 };
 
 exports.getById = async function(userId){
-   let user = await User.findById({_id: userId});
+   let user = await User.findById({_id: userId})
+      .populate('myPets');
 
    return user;
 }
