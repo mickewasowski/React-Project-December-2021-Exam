@@ -12,7 +12,7 @@ const petSchema = new mongoose.Schema({
       type: String,
       required: true,
       validate: [/^[a-zA-Z\s]+$/, 'Breed must contain only english alphabetical characters!'],
-      minlength: [5, 'Breed must be at least 5 characters long!'],
+      minlength: [3, 'Breed must be at least 3 characters long!'],
    },
    age: {
       type: Number,
@@ -30,10 +30,10 @@ const petSchema = new mongoose.Schema({
       required: true,
       validate: [/^https?:\/\//i, "The image URL is invalid!"],
    },
-   // owner: {
-   //    type: mongoose.Types.ObjectId,
-   //    ref: 'User'
-   // }
+   owner: {
+      type: mongoose.Types.ObjectId,
+      ref: 'User'
+   }
 });
 
 
