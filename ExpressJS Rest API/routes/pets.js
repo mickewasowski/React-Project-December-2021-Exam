@@ -33,10 +33,10 @@ try {
 
 //create one
 router.post('/create', async (req,res) => {
-   let {petName, breed, age, type, imageURL} = req.body;
+   let {petName, breed, age, type, imageURL, userId} = req.body;
 
    try{
-      const pet = await petService.create(petName, breed, age, type, imageURL);
+      const pet = await petService.create(petName, breed, age, type, imageURL, userId);
 
       res.status(201).json(pet);
    }catch(error){
