@@ -1,11 +1,15 @@
 import styles from './Create.module.css';
 
+import {useAuth} from '../../contexts/UserContext';
+
 import * as petService from '../../services/petService';
 import { useHistory } from 'react-router-dom';
 
 
 function Create() {
     let history = useHistory();
+
+    const {user} = useAuth();
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -14,10 +18,11 @@ function Create() {
         let petName = formData.get('petName');
         let breed = formData.get('breed');
         let age = formData.get('age');
-        let type = formData.get('type').toUpperCase();
+        let type = formData.get('type');
         let imageURL = formData.get('imageURL');
         
-        let response = await petService.createPet(petName, breed, age, type, imageURL);
+        let response = await petService.createPet(petName, breed, age, type, imageURL, user.userId);
+
 
         if(response._id){
             //history.push('/pets/all');
@@ -27,7 +32,7 @@ function Create() {
 
 
    return (
-         <form onSubmit={submitHandler}>
+         <form onSubmit={submitHandler} className={styles.createPetForm}>
             <div className="createPet">
                 <div className={styles.formHeadings}>
                     <h3>ADD PET</h3>
