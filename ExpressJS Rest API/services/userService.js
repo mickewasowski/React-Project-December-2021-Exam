@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const {} = require('../utils/jwtUtils');
 
 exports.register = async function(username, fullName, email, password, rePassword){
 
@@ -23,5 +24,18 @@ exports.login = async function(username, password){
       throw new Error('Username or password incorrect!');
    }
 
-   return user;
+   const userDetails = {
+      userId: user._id,
+      username: user.username,
+      email: user.email,
+      fullName: user.fullName
+   };
+
+   return userDetails;
 };
+
+exports.getById = async function(userId){
+   let user = await User.findById({_id: userId});
+
+   return user;
+}
