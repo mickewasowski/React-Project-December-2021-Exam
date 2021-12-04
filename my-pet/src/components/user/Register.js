@@ -1,11 +1,39 @@
 import styles from './Register.module.css';
 
+import {useState} from 'react';
+import {useHistory} from 'react-router-dom';
+
+import * as userService from '../../services/userService';
+
 function Register(){
+   const [error, setError] = useState('');
+   let history = useHistory();
+
+   const submitHandler = (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(e.currentTarget);
+      let username = formData.get('username');
+      let fullName = formData.get('fullName');
+      let email = formData.get('email');
+      let password = formData.get('password');
+      let rePassword = formData.get('rePassword');
+
+      userService.register(username, fullName, email, password, rePassword)
+      .then(res => {
+         if (!res._id) {
+            return setError(res.message);
+         }
+         history.push('/user/login');
+      })
+   }
+
    return(
-      <form>
+      <form onSubmit={submitHandler}>
             <div className="register">
                <div className={styles.formHeadings}>
                   <h3>REGISTER</h3>
+                  <p className={styles.error}>{error}</p>
                </div>
                <div>
                <label>Username : </label>
