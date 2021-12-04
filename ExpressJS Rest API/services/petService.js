@@ -1,7 +1,26 @@
 const Pet = require('../models/Pet');
+const userService = require('./userService');
 
-exports.create = async function(petName, breed, age, type, imageURL){ //ownerId
-   return await Pet.create({petName, breed, age, type, imageURL});
+
+exports.create = async function(petName, breed, age, type, imageURL, userId){ //ownerId
+   let typeUpperCase = type.toUpperCase();
+
+   const pet = new Pet({
+      petName,
+      breed, 
+      age, 
+      type: typeUpperCase,
+      imageURL, 
+      owner: userId
+   });
+
+   await pet.save();
+
+   let user = await userService.getById(userId);
+   user.myPets.push(pet._id);
+   await user.save();
+
+   return pet;
 }
 
 exports.getAll = async function (){
