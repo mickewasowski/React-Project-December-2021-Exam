@@ -1,8 +1,8 @@
-form{
+.loginForm{
    background-color: #FB9D3B;
    border-radius: 10px;
    width: 400px;
-   height: 470px;
+   height: 300px;
    margin: auto;
    margin-top: 20px;
    margin-bottom: 20px;
@@ -34,5 +34,10 @@ form{
  
  .formHeadings{
     text-align: center;
+ }
+
+ .error{
+    color: red;
+    margin: 0;
  }
  
