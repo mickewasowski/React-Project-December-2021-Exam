@@ -1,13 +1,19 @@
-import styles from './Details.module.css';
-
 import { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
+
+import { useAuth } from '../../contexts/UserContext';
+
+import styles from './Details.module.css';
 import * as petService from '../../services/petService';
+import * as userService from '../../services/userService';
 
 const Details = ({
     match,
 }) => {
+    const {user} = useAuth();
+
     const [pet, setPet] = useState({});
+    const [isCreator, setIsCreator] = useState(false);
 
     useEffect(() => {
         const petId = match.params.petId;
@@ -15,9 +21,25 @@ const Details = ({
         petService.getOne(petId)
             .then(result => {
                 setPet(result)
-
             });
         
+    }, []);
+
+    useEffect(() => {
+        const userId = user.userId;
+
+        userService.getById(userId)
+        .then(res => {
+            var pet = res.myPets.find(function(pet, index) {
+                if (pet._id === match.params.petId) {
+                    return true;
+                }
+            })
+
+            if (pet !== undefined) {
+                setIsCreator(true);
+            }
+        })
     }, []);
 
    return (
@@ -34,12 +56,15 @@ const Details = ({
                                 <p>Type : {pet.type} </p>
                             </div>
 
-
-                            <div className="buttonsContainer">
-                                <Link to={`/pets/edit/${pet._id}`} className={styles.editBtn}>Edit</Link>
-                                <Link to={`/pets/delete/${pet._id}`} className={styles.delBtn}>Delete</Link>
-                            </div>
-
+                            {
+                                isCreator === true
+                                ?
+                                <div className="buttonsContainer">
+                                    <Link to={`/pets/edit/${pet._id}`} className={styles.editBtn}>Edit</Link>
+                                    <Link to={`/pets/delete/${pet._id}`} className={styles.delBtn}>Delete</Link>
+                                </div>
+                                : ''
+                            }
                         </div>
                     </div>
                     <div >
