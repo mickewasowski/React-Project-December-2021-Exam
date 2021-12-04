@@ -1,15 +1,20 @@
 header{
    display: flex;
-   justify-content: flex-end;
+   justify-content: space-between;
    background-color: #252526;
    height: 60px;
    width: 100%;
    
 }
 
+.navigation{
+   display: inline-block;
+}
+
 .navigation ul {
    margin-top: 0;
-   display: block;
+   display: flex;
+   flex-flow: wrap;
 }
 
 .navigation ul li
@@ -24,4 +29,8 @@ header{
 a{
    text-decoration: none;
    color: white;
+}
+
+.nameDiv > h3{
+   padding-left: 10px;
 }
