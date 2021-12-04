@@ -27,5 +27,17 @@ router.post('/register', async (req, res) => {
    }
 });
 
+router.get('/:id', async (req, res) => {
+   let userId = req.params.id;
+
+   try {
+      let user = await userService.getById(userId);
+
+      res.status(302).json(user);
+   } catch (error) {
+      res.status(400).json({message: error.message});  
+   }
+});
+
 
 module.exports = router;
