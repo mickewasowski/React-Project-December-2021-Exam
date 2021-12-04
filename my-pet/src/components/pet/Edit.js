@@ -28,7 +28,7 @@ const Edit = ({
             <div className="editPet">
                 <div className={styles.formHeadings}>
                     <h3>EDIT PET</h3>
-                    <img src={pet.imageURL} alt="image"
+                    <img src={pet.imageURL} alt="animalPicture"
                             width="100px" height="100px" />
                 </div>
                 <div>

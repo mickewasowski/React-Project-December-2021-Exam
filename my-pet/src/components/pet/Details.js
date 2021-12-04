@@ -10,8 +10,9 @@ const Details = ({
     const [pet, setPet] = useState({});
 
     useEffect(() => {
+        const petId = match.params.petId;
 
-        petService.getOne(match.params.petId)
+        petService.getOne(petId)
             .then(result => {
                 setPet(result)
 
@@ -42,7 +43,7 @@ const Details = ({
                         </div>
                     </div>
                     <div >
-                        <img className={styles.petImg} src={pet.imageURL} alt="image"/>
+                        <img className={styles.petImg} src={pet.imageURL} alt="animalPicture"/>
                     </div>
                 </div>
 
