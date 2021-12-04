@@ -30,3 +30,8 @@ export function register(username, fullName, email, password, rePassword){
    })
    .then(res => {return res.json()});
 }
+
+export function getById(userId){
+   return fetch(`${baseURL}/user/${userId}`)
+         .then(res => {return res.json()});
+}
