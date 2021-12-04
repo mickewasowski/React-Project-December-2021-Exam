@@ -23,7 +23,6 @@ function Create() {
         
         let response = await petService.createPet(petName, breed, age, type, imageURL, user.userId);
 
-
         if(response._id){
             //history.push('/pets/all');
             history.push(`/pets/details/${response._id}`);
