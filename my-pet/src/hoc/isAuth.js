@@ -13,3 +13,17 @@ export const isAuth = (Component) => {
 
    return EnhancedComponent;
 }
+
+
+export const isNotAuth = (Component) => {
+
+   const EnhancedComponent = (props) => {
+      const {isAuthenticated} = useAuth();
+
+      return isAuthenticated 
+      ? <Redirect to="/"/>
+      : <Component {...props} />
+   }
+
+   return EnhancedComponent;
+}
