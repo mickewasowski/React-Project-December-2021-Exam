@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import { useAuth } from '../../contexts/UserContext';
+import {isAuth} from '../../hoc/isAuth';
 
 import * as userService from '../../services/userService';
 
@@ -30,4 +31,6 @@ function MyProfile(){
    )
 }
 
-export default MyProfile;
+const EnhancedComponent = isAuth(MyProfile);
+
+export default EnhancedComponent;
