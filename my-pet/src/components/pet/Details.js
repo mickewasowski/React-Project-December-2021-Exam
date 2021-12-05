@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 
 import { useAuth } from '../../contexts/UserContext';
+import {isAuth} from '../../hoc/isAuth';
 
 import styles from './Details.module.css';
 import * as petService from '../../services/petService';
@@ -76,4 +77,6 @@ const Details = ({
    );
 }
 
-export default Details;
+const EnhancedComponent = isAuth(Details);
+
+export default EnhancedComponent;
