@@ -1,6 +1,7 @@
 import {useState, useContext} from 'react';
 import {useHistory} from 'react-router-dom';
 import {UserContext} from '../../contexts/UserContext';
+import { isNotAuth } from '../../hoc/isAuth';
 
 import styles from './Login.module.css';
 
@@ -55,4 +56,6 @@ function Login(){
    );
 }
 
-export default Login;
+const EnhancedComponent = isNotAuth(Login);
+
+export default EnhancedComponent;
