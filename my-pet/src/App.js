@@ -14,6 +14,7 @@ import Edit from './components/pet/Edit';
 import Register from './components/user/Register';
 import Login from './components/user/Login';
 import MyProfile from './components/user/MyProfile';
+import Logout from './components/user/Logout';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/user/register" exact component={Register}/>
           <Route path="/user/login" exact component={Login}/>
           <Route path="/user/myprofile" exact component={MyProfile}/>
+          <Route path="/user/logout" exact component={Logout}/>
 
         </Switch>
         
