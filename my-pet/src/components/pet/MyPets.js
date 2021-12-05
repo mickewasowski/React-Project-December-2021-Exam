@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import {useAuth} from '../../contexts/UserContext';
+import {isAuth} from '../../hoc/isAuth';
 
 import * as userService from '../../services/userService';
 
@@ -39,4 +40,6 @@ const MyPets = () => {
    );
 }
 
-export default MyPets;
+const EnhancedComponent = isAuth(MyPets);
+
+export default EnhancedComponent;
