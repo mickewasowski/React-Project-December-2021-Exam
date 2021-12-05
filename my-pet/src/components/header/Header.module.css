@@ -25,10 +25,16 @@ header{
    padding-top: 15px;
 } 
 
-
 a{
    text-decoration: none;
    color: white;
+}
+
+.navigation > ul > li > a:hover{
+   background-color: 'white'; 
+   color: 'black';
+   font-weight: 'bold'; 
+   padding: '3px';
 }
 
 .nameDiv > h3{
