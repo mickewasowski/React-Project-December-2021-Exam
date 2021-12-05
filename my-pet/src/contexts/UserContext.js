@@ -24,8 +24,17 @@ export const UserInfoProvider = ({
       });
    }
 
+   const logout = () => {
+      setUser({
+         userId: '',
+         username: '',
+         fullName: '',
+         email: ''
+      });
+   }
+
    return (
-      <UserContext.Provider value={{user, login, isAuthenticated: Boolean(user.userId)}}>
+      <UserContext.Provider value={{user, login, isAuthenticated: Boolean(user.userId), logout}}>
          {children}
       </UserContext.Provider>
    );
