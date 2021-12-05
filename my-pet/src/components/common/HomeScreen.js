@@ -1,9 +1,10 @@
 import styles from './HomeScreen.module.css';
 
+import {useState, useEffect} from 'react';
+
 import * as petService from '../../services/petService';
 import PetPartial from '../pet/partials/PetPartial';
 
-import {useState, useEffect} from 'react';
 
 const HomeScreen = () => {
       const [ topPets, setTopPets ] = useState([]);
