@@ -1,5 +1,7 @@
 import styles from './AllPets.module.css';
 
+import {isAuth} from '../../hoc/isAuth';
+
 import { useState, useEffect } from 'react';
 
 import * as petService from '../../services/petService';
@@ -46,4 +48,6 @@ function AllPets(){
    );
 }
 
-export default AllPets;
+const EnhancedComponent = isAuth(AllPets);
+
+export default EnhancedComponent;
