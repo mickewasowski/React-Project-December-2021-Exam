@@ -25,7 +25,7 @@ export const UserInfoProvider = ({
    }
 
    return (
-      <UserContext.Provider value={{user, login}}>
+      <UserContext.Provider value={{user, login, isAuthenticated: Boolean(user.userId)}}>
          {children}
       </UserContext.Provider>
    );

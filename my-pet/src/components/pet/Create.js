@@ -1,6 +1,7 @@
 import styles from './Create.module.css';
 
 import {useAuth} from '../../contexts/UserContext';
+import {isAuth} from '../../hoc/isAuth';
 
 import * as petService from '../../services/petService';
 import { useHistory } from 'react-router-dom';
@@ -63,4 +64,6 @@ function Create() {
    );
 }
 
-export default Create;
+const EnhancedComponent = isAuth(Create);
+
+export default EnhancedComponent;
