@@ -19,7 +19,7 @@ const MyPets = () => {
                setPets(res.myPets);
             }
          })
-   }, []);
+   }, [user]);
 
 
    return (

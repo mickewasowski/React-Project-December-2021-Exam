@@ -16,7 +16,7 @@ const Edit = ({
             setPet(result)
         });
 
-    }, []);
+    }, [match]);
 
     const submitHandler = async (e) => {
         e.preventDefault();

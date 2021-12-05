@@ -23,7 +23,7 @@ const Details = ({
                 setPet(result)
             });
         
-    }, []);
+    }, [match]);
 
     useEffect(() => {
         const userId = user.userId;
@@ -40,7 +40,7 @@ const Details = ({
                 setIsCreator(true);
             }
         })
-    }, []);
+    }, [match]);
 
    return (
       <div className="details">

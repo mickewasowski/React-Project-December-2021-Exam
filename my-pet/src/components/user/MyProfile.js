@@ -17,7 +17,7 @@ function MyProfile(){
             setUserInfo(res);
             setPets(res.myPets);
          });
-   }, []);
+   }, [user]);
 
    return (
       <div className={styles.myProfile}>
