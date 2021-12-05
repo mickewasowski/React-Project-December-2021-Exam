@@ -1,8 +1,10 @@
 import styles from './Edit.module.css';
 
+import {useState, useEffect} from 'react';
+import { isAuth} from '../../hoc/isAuth';
+
 import * as petService from '../../services/petService';
 
-import {useState, useEffect} from 'react';
 
 
 const Edit = ({
@@ -55,4 +57,6 @@ const Edit = ({
    );
 }
 
-export default Edit;
+const EnhancedComponent = isAuth(Edit);
+
+export default EnhancedComponent;
