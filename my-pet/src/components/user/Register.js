@@ -2,6 +2,7 @@ import styles from './Register.module.css';
 
 import {useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import { isNotAuth } from '../../hoc/isAuth';
 
 import * as userService from '../../services/userService';
 
@@ -63,4 +64,7 @@ function Register(){
    )
 }
 
-export default Register;
+const EnhancedComponent = isNotAuth(Register);
+
+
+export default EnhancedComponent;
