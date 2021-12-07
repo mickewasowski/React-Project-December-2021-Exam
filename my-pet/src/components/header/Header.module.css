@@ -2,9 +2,14 @@ header{
    display: flex;
    justify-content: space-between;
    background-color: #252526;
-   height: 60px;
    width: 100%;
-   
+}
+
+.brandName{
+   font-size: larger;
+   font-weight: 600;
+   padding-top:10px;
+   padding-left:5px;
 }
 
 .navigation{
@@ -12,6 +17,7 @@ header{
 }
 
 .navigation ul {
+   list-style-type: none;
    margin-top: 0;
    display: flex;
    flex-flow: wrap;
@@ -30,13 +36,60 @@ a{
    color: white;
 }
 
-.navigation > ul > li > a:hover{
-   background-color: 'white'; 
-   color: 'black';
-   font-weight: 'bold'; 
-   padding: '3px';
-}
-
 .nameDiv > h3{
    padding-left: 10px;
+}
+
+.toggleButton{
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   display: none;
+   flex-direction: column;
+   justify-content: space-between;
+   width: 30px;
+   height: 20px;;
+}
+
+.dash{
+   height: 3px;
+   width: 100%;
+   background-color: white;
+   border-radius: 10px;
+}
+
+
+@media (max-width: 375px){
+   .brandName{
+      padding-bottom: 10px;
+   }
+
+   .toggleButton{
+      display: flex;
+   }
+
+   .navigation{
+      display: none;
+      width: 100%;
+   }
+
+   header{
+      flex-direction: column;
+      align-items: flex-start;
+   }
+
+   .navigation.active ul{
+      flex-direction: column;
+      list-style-type: none;
+      width: 100%;
+   }
+
+   .navigation.active li{
+      text-align: center;
+   }
+
+   .navigation.active{
+      display: flex;
+      width: 100%;
+   }
 }

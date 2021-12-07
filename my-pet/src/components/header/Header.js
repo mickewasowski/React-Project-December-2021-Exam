@@ -1,43 +1,56 @@
+import { useState } from 'react';
 import styles from './Header.module.css';
 import { useAuth } from '../../contexts/UserContext';
 
-import { NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
-function Header(){
+function Header() {
     const { user } = useAuth();
+    const [isActive, setIsActive] = useState(false);
 
-    let activeStyles = {backgroundColor: 'white', color: 'black', fontWeight: 'bold', padding: '3px'};
+    const dropdown = () => {
+        setIsActive(!isActive);
+        console.log(isActive);
+    }
+
+    let activeStyles = { backgroundColor: 'white', color: 'black', fontWeight: 'bold', padding: '3px' };
 
     return (
         <header>
-                {
-                    user.userId !== ''
+            <div className={styles.brandName}>MY PETS</div>
+            {
+                user.userId !== ''
                     ? <div className={styles.nameDiv}><h3>Hello, {user.fullName}!</h3></div>
                     : ''
-                }
-            <div className={styles.navigation}>
-                <nav>
-                    <ul>
-                        <li><NavLink to="/">HOME</NavLink></li>
-                       
-                       {
-                           user.userId !== ''
-                           ? <>
+            }
+
+            <a className={styles.toggleButton} href="#" onClick={dropdown}>
+                <span className={styles.dash}></span>
+                <span className={styles.dash}></span>
+                <span className={styles.dash}></span>
+            </a>
+
+            <div className={isActive ? `${styles.navigation} ${styles.active}` : styles.navigation}>
+                <ul>
+                    <li><NavLink to="/">HOME</NavLink></li>
+
+                    {
+                        user.userId !== ''
+                            ? <>
                                 <li><NavLink activeStyle={activeStyles} to="/pets/myPets">MY PETS</NavLink></li>
                                 <li><NavLink activeStyle={activeStyles} to="/pets/all">ALL PETS</NavLink></li>
                                 <li><NavLink activeStyle={activeStyles} to="/pets/create">CREATE</NavLink></li>
                                 <li><NavLink activeStyle={activeStyles} to="/user/myprofile">MY PROFILE</NavLink></li>
-                                <li><NavLink to="/user/logout">LOGOUT</NavLink></li>
+                                <li><NavLink activeStyle={activeStyles} to="/user/logout">LOGOUT</NavLink></li>
                             </>
-                           :
+                            :
                             <>
                                 <li><NavLink activeStyle={activeStyles} to="/user/register">REGISTER</NavLink></li>
                                 <li><NavLink activeStyle={activeStyles} to="/user/login">LOGIN</NavLink></li>
                             </>
-                       }
- 
-                    </ul>
-                </nav>
+                    }
+
+                </ul>
             </div>
         </header>
     );
