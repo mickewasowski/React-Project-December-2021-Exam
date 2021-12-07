@@ -40,4 +40,10 @@
     color: red;
     margin: 0;
  }
+
+ @media (max-width: 375px){
+   .loginForm{
+      width: 85%;
+   }
+ }
  
