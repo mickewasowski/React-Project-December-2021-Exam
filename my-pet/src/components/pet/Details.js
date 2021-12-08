@@ -35,13 +35,15 @@ const Details = ({
                 if (pet._id === match.params.petId) {
                     return true;
                 }
+
+                return undefined;
             })
 
             if (pet !== undefined) {
                 setIsCreator(true);
             }
         })
-    }, [match]);
+    }, [match, user.userId]);
 
    return (
                 <div className={styles.main}>
