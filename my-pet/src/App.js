@@ -16,6 +16,8 @@ import Login from './components/user/Login';
 import MyProfile from './components/user/MyProfile';
 import Logout from './components/user/Logout';
 
+import NotFound from './components/common/NotFound';
+
 
 function App() {
   return (
@@ -33,6 +35,7 @@ function App() {
           <Route path="/user/login" exact component={Login}/>
           <Route path="/user/myprofile" exact component={MyProfile}/>
           <Route path="/user/logout" exact component={Logout}/>
+          <Route path="*" exact component={NotFound}/>
 
         </Switch>
         
