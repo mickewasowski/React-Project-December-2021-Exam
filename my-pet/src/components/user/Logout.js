@@ -7,7 +7,7 @@ const Logout = () => {
 
    useEffect(() => {
       logout();
-   }, []);
+   }, [logout]);
    
    return <Redirect to="/" />;
 }
