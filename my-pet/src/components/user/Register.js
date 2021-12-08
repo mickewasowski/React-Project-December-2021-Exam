@@ -30,7 +30,7 @@ function Register(){
    }
 
    return(
-      <form onSubmit={submitHandler}>
+      <form className={styles.registerForm} onSubmit={submitHandler}>
             <div className="register">
                <div className={styles.formHeadings}>
                   <h3>REGISTER</h3>

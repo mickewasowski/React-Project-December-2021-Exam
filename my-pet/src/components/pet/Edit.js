@@ -26,7 +26,7 @@ const Edit = ({
 
 
    return (
-      <form action="" onSubmit={submitHandler}>
+      <form className={styles.editPetForm} onSubmit={submitHandler}>
             <div className="editPet">
                 <div className={styles.formHeadings}>
                     <h3>EDIT PET</h3>

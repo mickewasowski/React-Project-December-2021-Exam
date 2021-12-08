@@ -1,5 +1,5 @@
-form{
-   background-color: #FB9D3B;
+.editPetForm{
+   background-color: #81B0E1;
    border-radius: 10px;
    width: 400px;
    height: 470px;
@@ -36,3 +36,9 @@ form{
     text-align: center;
  }
  
+
+ @media (max-width: 600px){
+   .editPetForm{
+      width: 85%;
+   }
+ }

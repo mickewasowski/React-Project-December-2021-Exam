@@ -44,14 +44,16 @@ const Details = ({
     }, [match]);
 
    return (
-      <div className="details">
-          
                 <div className={styles.main}>
+                    <div className={styles.imgContainer}>
+                        <img className={styles.petImg} src={pet.imageURL} alt="animalPicture"/>
+                    </div>
                     <div className="left">
-                        <div className="petDetails">
-                            <h1>Pet Name : {pet.petName} </h1>
-                            <h3>Owner : </h3>
+                        <div className={styles.petDetails}>
+                            
                             <div className="card">
+                                <h2>Pet Name : {pet.petName} </h2>
+                                <h3>Owner : {user.fullName}</h3>
                                 <p>Breed : {pet.breed} </p>
                                 <p>Age : {pet.age} </p>
                                 <p>Type : {pet.type} </p>
@@ -60,7 +62,7 @@ const Details = ({
                             {
                                 isCreator === true
                                 ?
-                                <div className="buttonsContainer">
+                                <div className={styles.buttonsContainer}>
                                     <Link to={`/pets/edit/${pet._id}`} className={styles.editBtn}>Edit</Link>
                                     <Link to={`/pets/delete/${pet._id}`} className={styles.delBtn}>Delete</Link>
                                 </div>
@@ -68,12 +70,7 @@ const Details = ({
                             }
                         </div>
                     </div>
-                    <div >
-                        <img className={styles.petImg} src={pet.imageURL} alt="animalPicture"/>
-                    </div>
                 </div>
-
-      </div>
    );
 }
 

@@ -1,5 +1,5 @@
 .loginForm{
-   background-color: #FB9D3B;
+   background-color: #81B0E1;
    border-radius: 10px;
    width: 400px;
    height: 300px;
@@ -41,7 +41,7 @@
     margin: 0;
  }
 
- @media (max-width: 375px){
+ @media (max-width: 600px){
    .loginForm{
       width: 85%;
    }
