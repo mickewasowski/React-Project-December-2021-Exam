@@ -11,6 +11,8 @@ body{
    font-family: 'Montserrat', sans-serif;
    background-color: #414D57;
    color: white;
+   overflow-x: scroll;
+   min-width: 250px;
 }
 
 .App {
