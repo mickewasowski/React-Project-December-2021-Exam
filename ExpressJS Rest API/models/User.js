@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         validate: [/^[a-zA-Z0-9]+$/, 'Username must contain only english alphabetical characters or numeric characters!'],
         unique: true,
-        minlength: [3, 'Username must be at least 3 characters long!'],
+        minlength: [5, 'Username must be at least 5 characters long!'],
    },
    fullName: {
       type: String,
