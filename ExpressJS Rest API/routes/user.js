@@ -39,5 +39,18 @@ router.get('/:id', async (req, res) => {
    }
 });
 
+router.patch('/changePassword', async (req, res) => {
+   let {username, oldPass, newPassword, confirmNewPassword} = req.body;
+
+   try {
+      let result = await userService.changePassword(username, oldPass, newPassword, confirmNewPassword);
+
+      res.json(result);
+
+   } catch (error) {
+      res.status(400).json(error.message);
+   }
+});
+
 
 module.exports = router;

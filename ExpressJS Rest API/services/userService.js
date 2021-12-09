@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 const {} = require('../utils/jwtUtils');
 
 exports.register = async function(username, fullName, email, password, rePassword){
@@ -40,3 +41,19 @@ exports.getById = async function(userId){
 
    return user;
 }
+
+exports.changePassword = async function(username, oldPass, pass, confirmPass){
+   let user = await User.findOne({username});
+
+   let isValid = await user.validatePassword(oldPass);
+
+   let isEqual = (pass === confirmPass) ? true : false;
+
+   if (!isValid || !isEqual) {
+      throw new Error('The password you have entered is invalid!');
+   }
+
+   let newHashedPass = await bcrypt.hash(pass, 10);
+
+   return await User.findByIdAndUpdate(user._id, {password: newHashedPass}, {runValidators: true});
+};
