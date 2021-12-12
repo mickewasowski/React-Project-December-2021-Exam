@@ -2,7 +2,7 @@ const Pet = require('../models/Pet');
 const userService = require('./userService');
 
 
-exports.create = async function(petName, breed, age, type, imageURL, userId){ //ownerId
+exports.create = async function(petName, breed, age, type, publicImageId, userId){ //ownerId
    let typeUpperCase = type.toUpperCase();
 
    const pet = new Pet({
@@ -10,7 +10,7 @@ exports.create = async function(petName, breed, age, type, imageURL, userId){ //
       breed, 
       age, 
       type: typeUpperCase,
-      imageURL, 
+      publicImageId, 
       owner: userId
    });
 
