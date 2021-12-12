@@ -20,6 +20,8 @@ const MyPets = () => {
                setPets(res.myPets);
             }
          })
+         .catch(() => {
+         });
    }, [user]);
 
 
