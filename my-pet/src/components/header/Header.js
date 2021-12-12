@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './Header.module.css';
 import { useAuth } from '../../contexts/UserContext';
 
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 function Header() {
     const { user } = useAuth();
@@ -10,7 +10,6 @@ function Header() {
 
     const dropdown = () => {
         setIsActive(!isActive);
-        console.log(isActive);
     }
 
     let activeStyles = { backgroundColor: 'white', color: 'black', fontWeight: 'bold', padding: '3px' };
@@ -24,7 +23,7 @@ function Header() {
                     : ''
             }
 
-            <a className={styles.toggleButton} href="#" onClick={dropdown}>
+            <a className={styles.toggleButton} onClick={dropdown}>
                 <span className={styles.dash}></span>
                 <span className={styles.dash}></span>
                 <span className={styles.dash}></span>
