@@ -25,11 +25,15 @@ const petSchema = new mongoose.Schema({
       required: true,
       enum: ['CAT', 'DOG', 'PARROT', 'SNAKE']
    },
-   imageURL:{
+   publicImageId:{
       type: String,
-      required: true,
-      validate: [/^https?:\/\//i, "The image URL is invalid!"],
+      required: true
    },
+   // imageURL:{
+   //    type: String,
+   //    required: true,
+   //    validate: [/^https?:\/\//i, "The image URL is invalid!"],
+   // },
    owner: {
       type: mongoose.Types.ObjectId,
       ref: 'User'
