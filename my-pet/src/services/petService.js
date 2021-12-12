@@ -7,7 +7,7 @@ export function getAll() {
 
 export const getOne = (id) => fetch(`${baseURL}/pets/${id}`).then(res => res.json());
 
-export const createPet = (petName, breed, age, type, imageURL, userId) => 
+export const createPet = (petName, breed, age, type, publicImageId, userId) => 
             fetch(`${baseURL}/pets/create`, {
                         method: 'POST',
                         headers: {
@@ -18,7 +18,7 @@ export const createPet = (petName, breed, age, type, imageURL, userId) =>
                             breed,
                             age,
                             type,
-                            imageURL,
+                            publicImageId,
                             userId
                         })
                     })
