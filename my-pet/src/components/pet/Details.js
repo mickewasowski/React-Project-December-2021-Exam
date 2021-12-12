@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
+import {Image} from 'cloudinary-react';
 
 import { useAuth } from '../../contexts/UserContext';
 import {isAuth} from '../../hoc/isAuth';
@@ -48,7 +49,8 @@ const Details = ({
    return (
                 <div className={styles.main}>
                     <div className={styles.imgContainer}>
-                        <img className={styles.petImg} src={pet.imageURL} alt="animalPicture"/>
+                            {/* how we get the image */}
+                            <Image cloudName="dr2keg2us" publicId={pet.publicImageId} width="300" crop="scale"/>
                     </div>
                     <div className="left">
                         <div className={styles.petDetails}>

@@ -1,6 +1,7 @@
 import styles from './Edit.module.css';
 
 import {useState, useEffect} from 'react';
+import {Image} from 'cloudinary-react';
 import { isAuth} from '../../hoc/isAuth';
 
 import * as petService from '../../services/petService';
@@ -30,8 +31,8 @@ const Edit = ({
             <div className="editPet">
                 <div className={styles.formHeadings}>
                     <h3>EDIT PET</h3>
-                    <img src={pet.imageURL} alt="animalPicture"
-                            width="100px" height="100px" />
+                                   {/* how we get the image */}
+                    <Image cloudName="dr2keg2us" publicId={pet.publicImageId} width="200" crop="scale"/>
                 </div>
                 <div>
                     <label>Pet name : </label>
