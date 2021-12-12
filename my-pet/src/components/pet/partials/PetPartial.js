@@ -1,6 +1,7 @@
 import styles from './PetPartial.module.css';
 
 import {Link} from 'react-router-dom';
+import {Image} from 'cloudinary-react';
 import {useAuth} from '../../../contexts/UserContext'
 
 
@@ -11,8 +12,8 @@ const PetPartial = ({
 
    return(
       <div className={styles.petPartial}>
-               <img src={pet.imageURL} alt="petPicture"
-                  width="100px" height="100px" />
+                                             {/* how we get the image */}
+            <Image cloudName="dr2keg2us" publicId={pet.publicImageId} width="100" crop="scale"/>
                <h3> {pet.petName}</h3>
                <p> {pet.age}</p>
                <p> {pet.breed}</p>
