@@ -48,9 +48,9 @@ router.post('/create', async (req,res) => {
 router.patch('/:id', async (req,res) => {
    
    try {
-      let {petName, breed, age, type, imageURL} = req.body;
+      let {petName, breed, age, type} = req.body;
 
-      const updated = await petService.editOne(req.params.id, {petName, breed, age, type, imageURL});
+      const updated = await petService.editOne(req.params.id, {petName, breed, age, type});
 
       res.status(201).json(updated);
       
