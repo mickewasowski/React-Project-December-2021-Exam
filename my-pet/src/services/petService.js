@@ -48,6 +48,6 @@ export const deletePet = (id) => fetch(`${baseURL}/pets/${id}`, {
                                         method: 'DELETE',
                                         headers: {
                                             'Content-Type': 'application/json'
-                                        }
+                                        },
                                     })
                                     .then(res => {return res.json()});
