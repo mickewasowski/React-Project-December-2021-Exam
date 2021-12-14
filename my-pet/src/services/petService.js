@@ -27,3 +27,27 @@ export const createPet = (petName, breed, age, type, publicImageId, userId) =>
 
 export const getTopThreeAdded = () => fetch(`${baseURL}`)
                                         .then(res => res.json());
+
+
+export const editPet = (id, petName, breed, age, type) => fetch(`${baseURL}/pets/${id}`, {
+                                            method: 'PATCH',
+                                            headers: {
+                                                'Content-Type': 'application/json'
+                                            },
+                                            body: JSON.stringify({
+                                                petName, 
+                                                breed, 
+                                                age, 
+                                                type
+                                            })
+                                        })
+                                        .then(res => {return res.json()});
+
+
+export const deletePet = (id) => fetch(`${baseURL}/pets/${id}`, {
+                                        method: 'DELETE',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        }
+                                    })
+                                    .then(res => {return res.json()});
