@@ -10,10 +10,12 @@ import MyPets from './components/pet/MyPets';
 import Create from './components/pet/Create';
 import Details from './components/pet/Details';
 import Edit from './components/pet/Edit';
+import Delete from './components/pet/Delete';
 
 import Register from './components/user/Register';
 import Login from './components/user/Login';
 import MyProfile from './components/user/MyProfile';
+import ChangePassword from './components/user/ChangePassword';
 import Logout from './components/user/Logout';
 
 import NotFound from './components/common/NotFound';
@@ -31,12 +33,13 @@ function App() {
           <Route path="/pets/create" exact component={Create}/>
           <Route path="/pets/details/:petId" exact component={Details}/>
           <Route path="/pets/edit/:petId" exact component={Edit}/>
+          <Route path="/pets/delete/:petId" exact component={Delete}/>
           <Route path="/user/register" exact component={Register}/>
           <Route path="/user/login" exact component={Login}/>
           <Route path="/user/myprofile" exact component={MyProfile}/>
+          <Route path="/user/changePassword" exact component={ChangePassword}/>
           <Route path="/user/logout" exact component={Logout}/>
           <Route path="*" exact component={NotFound}/>
-
         </Switch>
         
       </div>
