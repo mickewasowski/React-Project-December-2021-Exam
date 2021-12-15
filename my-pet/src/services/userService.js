@@ -35,3 +35,19 @@ export function getById(userId){
    return fetch(`${baseURL}/user/${userId}`)
          .then(res => {return res.json()});
 }
+
+export function changePassword(username, oldPass, newPassword, confirmNewPassword){
+   return fetch(`${baseURL}/user/changePassword`,{
+      method: 'PATCH',
+      headers: {
+         'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify({
+         username, 
+         oldPass, 
+         newPassword, 
+         confirmNewPassword
+      })
+   })
+   .then(res => {return res.json()});
+}
