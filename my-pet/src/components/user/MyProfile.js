@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/UserContext';
 import {isAuth} from '../../hoc/isAuth';
 
@@ -35,8 +35,8 @@ function MyProfile(){
             <h4>Full name: {userInfo.fullName}</h4>
             <p>Pets owned: {pets.length}</p>
          </div>
-         <div className={styles.btnsContainer}>
-            <NavLink to="/user/changePassword">Update Password</NavLink>
+         <div className={styles.btnContainer}>
+            <Link to="/user/changePassword" className={styles.updatePassBtn}>Update Password</Link>
          </div>
       </div>
    )
