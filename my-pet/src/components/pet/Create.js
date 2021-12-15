@@ -31,12 +31,9 @@ function Create() {
         try {
             let publicImageId = await uploadImage(cloudForm);
 
-            console.log(publicImageId);
-
             petService
             .createPet(petName, breed, age, type, publicImageId, user.userId)
             .then(res => {
-                console.log(res);
                 if (res._id) {
                     history.push(`/pets/details/${res._id}`);
                 }
