@@ -45,7 +45,7 @@ router.patch('/changePassword', async (req, res) => {
    try {
       let result = await userService.changePassword(username, oldPass, newPassword, confirmNewPassword);
 
-      res.json(result);
+      res.json({userId: result._id, username: result.username, email: result.email, fullName: result.fullName});
 
    } catch (error) {
       res.status(400).json(error.message);
