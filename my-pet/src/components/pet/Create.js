@@ -1,5 +1,7 @@
 import styles from './Create.module.css';
 
+import {useState, useEffect, useContext} from 'react';
+
 import {useAuth} from '../../contexts/UserContext';
 import {isAuth} from '../../hoc/isAuth';
 
@@ -9,9 +11,19 @@ import { useHistory } from 'react-router-dom';
 
 
 function Create() {
+    const [error, setError] = useState('');
+    const [types, setTypes] = useState({});
     let history = useHistory();
 
     const {user} = useAuth();
+
+    useEffect(() => {
+        petService.getAnimalEnumTypes()
+            .then(res => {
+                console.log(res);
+                setTypes(res);
+            });
+    },[]);
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -28,19 +40,20 @@ function Create() {
         cloudForm.append('upload_preset', 'g6y3jaem');
         cloudForm.append('cloud_name', 'dr2keg2us');
 
-        try {
             let publicImageId = await uploadImage(cloudForm);
 
             petService
-            .createPet(petName, breed, age, type, publicImageId, user.userId)
-            .then(res => {
-                if (res._id) {
-                    history.push(`/pets/details/${res._id}`);
-                }
-            });
-        } catch (error) {
-            history.push('/failed');
-        }
+                .createPet(petName, breed, age, type, publicImageId, user.userId)
+                .then(res => {
+                    if (res._id) {
+                        history.push(`/pets/details/${res._id}`);
+                    }else if(res.message){
+                        throw Error(res.message);
+                    }
+                })
+                .catch(err => {
+                    setError(err.message)
+                });
     }
 
 
@@ -49,6 +62,11 @@ function Create() {
             <div className="createPet">
                 <div className={styles.formHeadings}>
                     <h3>ADD PET</h3>
+                    
+                    {
+                        error !== '' ? <p>{error}</p>
+                        : ''
+                    }
                 </div>
                 <div>
                 <label>Pet name : </label>
@@ -64,7 +82,17 @@ function Create() {
                 </div>
                 <div>
                     <label>Type : </label>
-                    <input type="text" placeholder="Enter Type" name="type" required />
+                    {/* <input type="text" placeholder="Enter Type" name="type" required /> */}
+                    <select name="type" >
+                        {
+                            types.length > 0 
+                            ? types.map(x => 
+                                
+                                <option value={x}>{x}</option>
+                                )
+                                : ''
+                        }
+                    </select>
                 </div>
                 <div>
                     <label>Image file upload:</label>
