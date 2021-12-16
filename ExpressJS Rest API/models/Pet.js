@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const petSchema = new mongoose.Schema({
    petName: {
       type: String,
@@ -23,7 +22,7 @@ const petSchema = new mongoose.Schema({
    type: {
       type: String,
       required: true,
-      enum: ['CAT', 'DOG', 'PARROT', 'SNAKE']
+      enum: ['CAT', 'DOG', 'FISH', 'SNAKE', 'SPIDER', 'OTHER']
    },
    publicImageId:{
       type: String,
