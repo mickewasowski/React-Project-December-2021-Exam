@@ -1,20 +1,22 @@
 const router = require('express').Router();
 const petService = require('../services/petService');
 
-//get all
-router.get('/all', async (req,res) => {
-   try{
-   const allPets = await petService.getAll();
+const Pet = require('../models/Pet');
 
-   res.json(allPets);
+//get all
+const getAllPets = async (req,res) => {
+   try{
+      const allPets = await petService.getAll();
+
+      return res.status(302).json(allPets);
    }
    catch(error){
-      res.status(500).json({message: error.message});
+      return res.status(404).json({message: error.message});
    }
-});
+};
 
 //get one
-router.get('/:id', async (req,res) => {
+const getOne = async (req,res) => {
 try {
    let petId = req.params.id;
 
@@ -23,53 +25,69 @@ try {
    if (pet == null) {
       return res.status(404).json({message: "Cannot find pet!"});
    }else{
-      res.json(pet);
+      return res.json(pet);
    }
    
 } catch (error) {
-   res.status(404).json({message: error.message});
+   return res.status(404).json({message: error.message});
 }
-});
+};
+
+
+//get animalTypes
+const getAnimalTypes = async (req,res) => {
+
+   let enumValues = Pet.schema.path('type').enumValues;
+   const enumToObject = Object.assign(enumValues);
+
+   return res.json(enumToObject);
+};
 
 //create one
-router.post('/create', async (req,res) => {
+const create = async (req,res) => {
    let {petName, breed, age, type, publicImageId, userId} = req.body; //imageURL
 
    try{
       const pet = await petService.create(petName, breed, age, type, publicImageId, userId); //imageURL
 
-      res.status(201).json(pet);
+      return res.status(201).json(pet);
    }catch(error){
-      res.status(400).json({message: error.message});
+      return res.status(400).json({message: error.message});
    }
-});
+};
 
 //update one
-router.patch('/:id', async (req,res) => {
+const updatePet = async (req,res) => {
    
    try {
       let {petName, breed, age, type} = req.body;
 
       const updated = await petService.editOne(req.params.id, {petName, breed, age, type});
 
-      res.status(201).json(updated);
+      return res.status(201).json(updated);
       
    } catch (error) {
-      res.status(400).json({message: error.message});
+      return res.status(400).json({message: error.message});
    }
-});
+};
 
 //delete one
-router.delete('/:id', async (req,res) => {
+const deletePet = async (req,res) => {
    
    try {
       await petService.deleteOne(req.params.id);
 
-      res.status(200).json({message: "Deleted successfully!"});
+      return res.status(200).json({message: "Deleted successfully!"});
    } catch (error) {
-      res.status(400).json({message: error.message});
+      return res.status(400).json({message: error.message});
    }
-});
+};
 
+router.get('/all', getAllPets);
+router.get('/:id', getOne);
+router.post('/create', create);
+router.patch('/:id', updatePet);
+router.delete('/:id', deletePet);
 
+router.get('/db/types', getAnimalTypes); 
 module.exports = router;
