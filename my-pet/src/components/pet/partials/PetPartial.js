@@ -19,12 +19,16 @@ const PetPartial = ({
                <p> {pet.breed}</p>
                
                {
-                  user.userId
-                  ? <Link 
-                  to={`/pets/details/${pet._id}`} 
-                  className={styles.detailsBtn}> Details
+                  // user.userId
+                  // ? <Link 
+                  // to={`/pets/details/${pet._id}`} 
+                  // className={styles.detailsBtn}> Details
+                  // </Link>
+                  // : ''
+                  <Link 
+                     to={`/pets/details/${pet._id}`} 
+                     className={styles.detailsBtn}> Details
                   </Link>
-                  : ''
                }
                
       </div>
