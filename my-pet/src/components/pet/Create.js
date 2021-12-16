@@ -20,9 +20,9 @@ function Create() {
     useEffect(() => {
         petService.getAnimalEnumTypes()
             .then(res => {
-                console.log(res);
                 setTypes(res);
-            });
+            })
+            .catch(err => {setError(err)});
     },[]);
 
     const submitHandler = async (e) => {
@@ -83,7 +83,7 @@ function Create() {
                 <div>
                     <label>Type : </label>
                     {/* <input type="text" placeholder="Enter Type" name="type" required /> */}
-                    <select name="type" >
+                    <select name="type" className={styles.dropdown}>
                         {
                             types.length > 0 
                             ? types.map(x => 
@@ -95,8 +95,8 @@ function Create() {
                     </select>
                 </div>
                 <div>
-                    <label>Image file upload:</label>
-                    <input type="file" name="imageFile"/>
+                    <label for="imageUpload" className={styles.imageUpload}>Upload image</label>
+                    <input id="imageUpload" type="file" name="imageFile" />
                 </div>
 
                 <div className={styles.btnContainer}>
