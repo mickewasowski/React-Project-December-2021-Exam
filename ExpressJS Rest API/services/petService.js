@@ -23,6 +23,14 @@ exports.create = async function(petName, breed, age, type, publicImageId, userId
    return pet;
 }
 
+exports.getAnimalEnumTypes = async function(){
+
+   let enumValues = Pet.schema.path('type').enumValues;
+   const enumToObject = Object.assign(enumValues);
+
+   return enumToObject;
+}
+
 exports.getAll = async function (){
    return await Pet.find();
 }
