@@ -78,6 +78,6 @@ const Details = ({
    );
 }
 
-const EnhancedComponent = isAuth(Details);
+// const EnhancedComponent = isAuth(Details);
 
-export default EnhancedComponent;
+export default Details;
