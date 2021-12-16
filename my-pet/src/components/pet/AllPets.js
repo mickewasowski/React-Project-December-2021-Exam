@@ -48,6 +48,6 @@ function AllPets(){
    );
 }
 
-const EnhancedComponent = isAuth(AllPets);
+// const EnhancedComponent = isAuth(AllPets);
 
-export default EnhancedComponent;
+export default AllPets;

@@ -32,12 +32,11 @@ function Header() {
             <div className={isActive ? `${styles.navigation} ${styles.active}` : styles.navigation}>
                 <ul>
                     <li><NavLink to="/">HOME</NavLink></li>
-
+                    <li><NavLink activeStyle={activeStyles} to="/pets/all">ALL PETS</NavLink></li>
                     {
                         user.userId !== ''
                             ? <>
                                 <li><NavLink activeStyle={activeStyles} to="/pets/myPets">MY PETS</NavLink></li>
-                                <li><NavLink activeStyle={activeStyles} to="/pets/all">ALL PETS</NavLink></li>
                                 <li><NavLink activeStyle={activeStyles} to="/pets/create">CREATE</NavLink></li>
                                 <li><NavLink activeStyle={activeStyles} to="/user/myprofile">MY PROFILE</NavLink></li>
                                 <li><NavLink activeStyle={activeStyles} to="/user/logout">LOGOUT</NavLink></li>
