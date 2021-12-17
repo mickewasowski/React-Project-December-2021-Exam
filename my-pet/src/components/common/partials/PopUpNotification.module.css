@@ -1,0 +1,27 @@
+.mainContainerActive{
+   display: inline-block;
+   margin-top: 5px;
+   width: 400px;
+   min-height: 50px;
+   background-color: rgba(255,0,0,0.40);
+   border-radius: 10px;
+   padding: 5px;
+}
+
+.closeBtn{
+    width: 42px;
+    background-color: black;
+    border-radius: 5px;
+    padding: 1px;
+    margin-bottom: 2px;
+}
+
+.mainContainerInactive{
+   display: none;
+}
+
+@media (max-width: 600px){
+   .mainContainerActive{
+      width: 85%;
+   }
+ }
