@@ -16,6 +16,7 @@ app.use('/', homeRouter);
 app.use('/pets', petsRouter);
 app.use('/user', userRouter);
 
+mongoose.set('runValidators', true);
 mongoose.connect(DATABASE_CONNECTION_STRING)
 .then(app.listen(PORT, () => console.log(`Server started at http://localhost:5000 ...`)))
 .catch(error => console.log(error));
