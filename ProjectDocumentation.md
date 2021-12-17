@@ -29,6 +29,5 @@ HTML & CSS - custom made -> responsive design (begginer made)
 1. Route guards
 2. Error handling
 3. Context API (no user state persistance)
-4. Custom hook (isAuth and isNotAuth)
-5. Basic authentication with username and password
-6. Cloudinary upload and visualization of pet images
+4. Basic authentication with username and password
+5. Cloudinary upload and visualization of pet images
