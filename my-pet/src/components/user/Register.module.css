@@ -30,6 +30,10 @@
     width: 90px;
     height: 30px;
  }
+
+ #registerBtn{
+    margin-top: -20px;
+ }
  
  .btnContainer{
     text-align: center;
