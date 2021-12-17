@@ -15,9 +15,13 @@ function AllPets(){
 
    useEffect(() => {
       async function fetch(){
-         let result = await petService.getAll();
+         petService.getAll()
+         .then(res => {
 
-         setPets(result);
+            setPets(res);
+         })
+         .catch(err => console.log(err));
+
       }
 
       fetch();
