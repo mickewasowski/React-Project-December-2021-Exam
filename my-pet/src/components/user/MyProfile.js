@@ -18,10 +18,14 @@ function MyProfile(){
    useEffect(() => {
       userService.getById(user.userId)
          .then(res => {
+            if (!res._id) {
+               throw Error(res);
+            }
             setUserInfo(res);
             setPets(res.myPets);
          })
-         .catch(() => {
+         .catch(err => {
+            console.log(err);
             history.push('/user/login');
          });
    }, [user]);
