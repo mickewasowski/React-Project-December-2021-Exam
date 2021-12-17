@@ -7,6 +7,8 @@ import styles from './Login.module.css';
 
 import * as userService from '../../services/userService';
 
+import PopUpPartial from '../common/partials/PopUpNotification';
+
 function Login(){
    const [error, setError] = useState('');
 
@@ -28,31 +30,39 @@ function Login(){
                login(res.userId, res.username, res.email, res.fullName);
                history.push('/');
             }else{
-               setError(res.message);
+               throw Error(res);
             }
+         })
+         .catch(err => {
+            if (err.message.includes("Failed to fetch")) {
+               setError(err.message);
+           }
+            console.log(err)
          });
    }
 
    return( 
-   <form onSubmit={submitHandler} className={styles.loginForm}>
-      <div className="login">
-            <div className={styles.formHeadings}>
-               <h3>LOGIN</h3>
-               <p className={styles.error}>{error}</p>
+      <>
+         <PopUpPartial error={error} />
+         <form onSubmit={submitHandler} className={styles.loginForm}>
+            <div className="login">
+                  <div className={styles.formHeadings}>
+                     <h3>LOGIN</h3>
+                  </div>
+                  <div>
+                     <label>Username : </label>
+                     <input type="text" placeholder="Enter Username" name="username" required />
+                  </div>
+               <div>
+                  <label>Password : </label>
+                  <input type="password" placeholder="Enter Password" name="password" required />
+               </div>
+               <div className={styles.btnContainer}>
+                  <button id={styles.loginBtn} type="submit">LOGIN</button>
+               </div>
             </div>
-            <div>
-               <label>Username : </label>
-               <input type="text" placeholder="Enter Username" name="username" required />
-            </div>
-         <div>
-            <label>Password : </label>
-            <input type="password" placeholder="Enter Password" name="password" required />
-         </div>
-         <div className={styles.btnContainer}>
-            <button type="submit">LOGIN</button>
-         </div>
-      </div>
-   </form>
+         </form>
+   </>
    );
 }
 
