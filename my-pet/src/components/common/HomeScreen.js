@@ -13,7 +13,8 @@ const HomeScreen = () => {
          petService.getTopThreeAdded()
             .then(result => {
                setTopPets(result)
-            });
+            })
+            .catch(err => console.log(err));
       }, []);
 
    return (
