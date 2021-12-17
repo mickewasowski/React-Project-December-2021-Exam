@@ -9,6 +9,8 @@ import {uploadImage} from '../../services/cloudinaryService';
 import * as petService from '../../services/petService';
 import { useHistory } from 'react-router-dom';
 
+import PopUpPartial from '../common/partials/PopUpNotification';
+
 
 function Create() {
     const [error, setError] = useState('');
@@ -22,7 +24,12 @@ function Create() {
             .then(res => {
                 setTypes(res);
             })
-            .catch(err => {setError(err)});
+            .catch(err => {
+                if (typeof(err) == "object") {
+                    return console.log(err);
+                }
+                setError(err)
+            });
     },[]);
 
     const submitHandler = async (e) => {
@@ -47,26 +54,28 @@ function Create() {
                 .then(res => {
                     if (res._id) {
                         history.push(`/pets/details/${res._id}`);
-                    }else if(res.message){
+                    }else if(res.message.includes("Pet validation failed")){
+                        setError(res.message); 
+                    }else{
                         throw Error(res.message);
                     }
                 })
                 .catch(err => {
-                    setError(err.message)
+                    if (err.message.includes("Failed to fetch")) {
+                        setError(err.message);
+                    }
+                    console.log(err);
                 });
     }
 
 
    return (
+    <>
+        <PopUpPartial error={error} />
          <form onSubmit={submitHandler} className={styles.createPetForm}>
             <div className="createPet">
                 <div className={styles.formHeadings}>
                     <h3>ADD PET</h3>
-                    
-                    {
-                        error !== '' ? <p>{error}</p>
-                        : ''
-                    }
                 </div>
                 <div>
                 <label>Pet name : </label>
@@ -104,6 +113,7 @@ function Create() {
                 </div>
             </div>
         </form>
+    </>
    );
 }
 
