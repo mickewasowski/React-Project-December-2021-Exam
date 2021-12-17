@@ -33,11 +33,16 @@ export function register(username, fullName, email, password, rePassword){
 
 export function getById(userId){
    return fetch(`${baseURL}/user/${userId}`)
-         .then(res => {return res.json()});
+         .then(res => {
+            if (res.ok) {
+               return res.json();
+            }
+            throw Error(res);
+         });
 }
 
 export function changePassword(username, oldPass, newPassword, confirmNewPassword){
-   return fetch(`${baseURL}/user/changePassword`,{
+   return fetch(`${baseURL}/user/db/changePassword`,{
       method: 'PATCH',
       headers: {
          'Content-Type' : 'application/json'
@@ -49,5 +54,7 @@ export function changePassword(username, oldPass, newPassword, confirmNewPasswor
          confirmNewPassword
       })
    })
-   .then(res => {return res.json()});
+   .then(res => {
+      return res.json();
+   });
 }
