@@ -33,13 +33,13 @@ router.get('/:id', async (req, res) => {
    try {
       let user = await userService.getById(userId);
 
-      res.status(302).json(user);
+      res.json(user);
    } catch (error) {
       res.status(400).json({message: error.message});  
    }
 });
 
-router.patch('/changePassword', async (req, res) => {
+router.patch('/db/changePassword', async (req, res) => {
    let {username, oldPass, newPassword, confirmNewPassword} = req.body;
 
    try {
