@@ -32,6 +32,7 @@ const Details = ({
 
         userService.getById(userId)
         .then(res => {
+            console.log(res);
             var pet = res.myPets.find(function(pet, index) {
                 if (pet._id === match.params.petId) {
                     return true;

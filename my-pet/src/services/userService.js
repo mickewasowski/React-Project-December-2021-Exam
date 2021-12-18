@@ -34,11 +34,7 @@ export function register(username, fullName, email, password, rePassword){
 export function getById(userId){
    return fetch(`${baseURL}/user/${userId}`)
          .then(res => {
-            if (res.ok) {
-               return res.json();
-            }
-            throw Error(res);
-         });
+               return res.json()});
 }
 
 export function changePassword(username, oldPass, newPassword, confirmNewPassword){

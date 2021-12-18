@@ -25,10 +25,14 @@ function Login(){
 
       userService.login(username, password)
          .then(res => {
+            console.log(res);
             if (res.userId) {
+
                setError('');
                login(res.userId, res.username, res.email, res.fullName);
                history.push('/');
+            }else if(res.message){
+               setError(res.message);
             }else{
                throw Error(res);
             }
