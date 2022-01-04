@@ -25,7 +25,6 @@ function Login(){
 
       userService.login(username, password)
          .then(res => {
-            console.log(res);
             if (res.userId) {
 
                setError('');
