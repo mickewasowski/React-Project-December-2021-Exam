@@ -8,7 +8,7 @@
 body{
    margin: 0;
    padding: 0;
-   height: 100%;
+   height: 100vh;
    width: 100%;
    font-family: 'Montserrat', sans-serif;
    background-color: #414D57;
@@ -17,7 +17,7 @@ body{
 
 .App {
   text-align: center;
-  height: 100%;
+  height: 100vh;
 }
 
 @media (max-width: 600px){

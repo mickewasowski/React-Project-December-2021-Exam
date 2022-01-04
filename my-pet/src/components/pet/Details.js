@@ -51,7 +51,7 @@ const Details = ({
                 <div className={styles.main}>
                     <div className={styles.imgContainer}>
                             {/* how we get the image */}
-                            <Image cloudName="dr2keg2us" publicId={pet.publicImageId} width="300" crop="scale"/>
+                            <Image className={styles.image} cloudName="dr2keg2us" publicId={pet.publicImageId} width="300" crop="scale"/>
                     </div>
                     <div className="left">
                         <div className={styles.petDetails}>

@@ -1,7 +1,7 @@
 .main{
    display: flex;
    justify-content: space-around;
-   width: 100%;
+   width: 90%;
    margin: auto;
    margin-top: 30px;
    background-color: #81B0E1;
@@ -31,10 +31,11 @@
 
 .editBtn,
 .delBtn{
-padding: 5px;
-border-radius: 4px;
-margin-left: 2px;
-margin-right: 2px;
+   display: inline-block;
+   padding: 5px;
+   border-radius: 4px;
+   margin-left: 2px;
+   margin-right: 2px;
 }
 
 .editBtn{
@@ -47,16 +48,24 @@ margin-right: 2px;
 
 @media (max-width: 600px){
    .main{
-      width: 85%;
       flex-direction: column;
+      width: 85%;
+      height: 80%;
    }
 
-   .imgContainer{
+   /* .imgContainer{
       height: 50%;
+   } */
+
+   .image{
+      width: 90%;
    }
 
-   .petImg{
-      width: 50%;
-      height: 60%;
+   /* .card{
+      padding: 5px;
+   } */
+
+   .buttonsContainer{
+      margin-top: 15px;
    }
  }
