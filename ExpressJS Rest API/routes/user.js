@@ -40,10 +40,10 @@ router.get('/:id', async (req, res) => {
 });
 
 router.patch('/db/changePassword', async (req, res) => {
-   let {username, oldPass, newPassword, confirmNewPassword} = req.body;
+   let {username,email, newPassword, confirmNewPassword} = req.body;
 
    try {
-      let result = await userService.changePassword(username, oldPass, newPassword, confirmNewPassword);
+      let result = await userService.changePassword(username,email, newPassword, confirmNewPassword);
 
       res.json({userId: result._id, username: result.username, email: result.email, fullName: result.fullName});
 

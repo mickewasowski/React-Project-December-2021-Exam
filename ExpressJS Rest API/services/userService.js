@@ -42,18 +42,18 @@ exports.getById = async function(userId){
    return user;
 }
 
-exports.changePassword = async function(username, oldPass, pass, confirmPass){
+exports.changePassword = async function(username,email, newPass, confirmPass){
    let user = await User.findOne({username});
 
-   let isValid = await user.validatePassword(oldPass);
+   let isValid = (user.email === email) ? true : false;
 
-   let isEqual = (pass === confirmPass) ? true : false;
+   let isEqual = (newPass === confirmPass) ? true : false;
 
    if (!isValid || !isEqual) {
-      throw new Error('The password you have entered is invalid!');
+      throw new Error('The password or email you have entered is invalid!');
    }
 
-   let newHashedPass = await bcrypt.hash(pass, 10);
+   let newHashedPass = await bcrypt.hash(newPass, 10);
 
    return await User.findByIdAndUpdate(user._id, {password: newHashedPass}, {runValidators: true});
 };

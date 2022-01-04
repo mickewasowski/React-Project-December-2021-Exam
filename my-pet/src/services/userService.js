@@ -37,15 +37,15 @@ export function getById(userId){
                return res.json()});
 }
 
-export function changePassword(username, oldPass, newPassword, confirmNewPassword){
+export function changePassword(username, email, newPassword, confirmNewPassword){
    return fetch(`${baseURL}/user/db/changePassword`,{
       method: 'PATCH',
       headers: {
          'Content-Type' : 'application/json'
       },
       body: JSON.stringify({
-         username, 
-         oldPass, 
+         username,
+         email,
          newPassword, 
          confirmNewPassword
       })
