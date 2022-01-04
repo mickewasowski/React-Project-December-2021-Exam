@@ -19,27 +19,29 @@ function ChangePassword(){
       e.preventDefault();
 
       const formData = new FormData(e.currentTarget);
-      const oldPass = formData.get('oldPass');
+      const email = formData.get('email');
       const newPass = formData.get('pass');
       const rePass = formData.get('rePass');
 
-         await userService.changePassword(user.username, oldPass, newPass, rePass)
-         .then(res => { 
-            console.log(res);
-            if (res.includes('Failed to fetch')) {
-               setError(res.message);
-            }
-            else if(!res.userId){
-               setError(res);
-            }
-            else if(res.userId){
-               history.push(`/user/myProfile`); 
-            }
-            else{
-               throw Error(res);
-            }
-         })
-         .catch(err => {console.log(err);});     
+         await userService.changePassword(user.username,email, newPass, rePass)
+            .then(res => { 
+               console.log('here');
+               console.log(res);
+
+               if(res.userId){
+                  history.push(`/user/myProfile`); 
+               }
+               else if(!res.userId){
+                  setError(res);
+               }
+               else if (res.includes('Failed to fetch')) {
+                  setError(res.message);
+               }
+               else{
+                  throw Error(res);
+               }
+            })
+            .catch(err => {console.log(err);});     
    }
 
       return (
@@ -50,8 +52,8 @@ function ChangePassword(){
                   <h3>Update password</h3>
                </div>
                <div>
-                  <label>Current password:</label>
-                  <input type="password" name="oldPass"/>
+                  <label>Email:</label>
+                  <input type="text" name="email"/>
                </div>
                <div>
                   <label>New Password:</label>
